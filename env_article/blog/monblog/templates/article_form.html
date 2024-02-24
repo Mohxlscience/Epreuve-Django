@@ -1,0 +1,12 @@
+<!-- templates/blog/article_form.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{% if form.instance.pk %}Modifier{% else %}Créer{% endif %} un article</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+  </form>
+{% endblock %}

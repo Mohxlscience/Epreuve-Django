@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Articles</h2>
+  {% for article in articles %}
+    <div>
+      <h3><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
+      <p class="fade-in">{{ article.content }}</p>
+      <p class="fade-in">Publié le: {{ article.created_at }}</p>
+      <p class="fade-in">Auteur: {{ article.author }}</p>
+      <!-- Lien pour éditer l'article -->
+      <a href="{% url 'article_edit' article.pk %}">Editer</a>
+      <!-- Lien pour supprimer l'article -->
+      <a href="{% url 'article_delete' article.pk %}">Supprimer</a>
+    </div>
+    <hr>
+  {% endfor %}
+  <!-- Lien pour créer un nouvel article -->
+  <a href="{% url 'article_create' %}">Créer un nouvel article</a>
+{% endblock %}
